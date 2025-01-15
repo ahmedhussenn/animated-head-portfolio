@@ -1,5 +1,8 @@
 // Define DOM elements
 const heroImage = document.querySelector("#hero__animation__img");
+const heroSection = document.querySelector("#hero__animation"); // The container section for the animation
+
+const heroBubble = document.querySelector("#hero__bubble");
 
 const tl = document.querySelector("#grid__tl");
 const tr = document.querySelector("#grid__tr");
@@ -40,6 +43,8 @@ let brHidden = "translateX(100vw) translateY(100vh)";
 
 // Define corner that is open
 let activeCorner = "";
+
+let isCornerActive = false;
 
 // Add an event listener to the window object to listen for resize events
 window.addEventListener("resize", handleWindowResize);
@@ -249,9 +254,12 @@ function playClosingAnimation(reverseAnimation) {
 
 // Onclick corner button functions
 tlBtn.onclick = function () {
-  if (activeCorner === "top-left") {
+  if (activeCorner === "top-left" && isCornerActive === true) {
     playClosingAnimation("reverse-animate-top-left");
+    isCornerActive = false;
   } else {
+    isCornerActive = true;
+
     trBtn.innerHTML = "Experience";
     blBtn.innerHTML = "Projects";
     brBtn.innerHTML = "Contact";
@@ -261,7 +269,7 @@ tlBtn.onclick = function () {
     tlBtn.innerHTML = "&uarr;<br/>About";
 
     handleWindowResize();
-    playAnimation("animate-top-left", "reverse-animate-top-left");
+    // playAnimation("animate-top-left", "reverse-animate-top-left");
 
     // Change background colors
     trBtn.style.background = bgColor;
@@ -284,9 +292,11 @@ tlBtn.onclick = function () {
 };
 
 trBtn.onclick = function () {
-  if (activeCorner === "top-right") {
+  if (activeCorner === "top-right" && isCornerActive === true) {
     playClosingAnimation("reverse-animate-top-right");
+    isCornerActive = false;
   } else {
+    isCornerActive = true;
     tlBtn.innerHTML = "About";
     blBtn.innerHTML = "Projects";
     brBtn.innerHTML = "Contact";
@@ -296,7 +306,7 @@ trBtn.onclick = function () {
     trBtn.innerHTML = "&uarr;<br/>Experience";
 
     handleWindowResize();
-    playAnimation("animate-top-right", "reverse-animate-top-right");
+    // playAnimation("animate-top-right", "reverse-animate-top-right");
 
     // Change background colors
     trBtn.style.background = bgColorAlt;
@@ -319,9 +329,11 @@ trBtn.onclick = function () {
 };
 
 blBtn.onclick = function () {
-  if (activeCorner === "bottom-left") {
+  if (activeCorner === "bottom-left" && isCornerActive === true) {
     playClosingAnimation("reverse-animate-bottom-left");
+    isCornerActive = false;
   } else {
+    isCornerActive = true;
     tlBtn.innerHTML = "About";
     trBtn.innerHTML = "Experience";
     brBtn.innerHTML = "Contact";
@@ -331,7 +343,7 @@ blBtn.onclick = function () {
     blBtn.innerHTML = "Projects<br/>&darr;";
 
     handleWindowResize();
-    playAnimation("animate-bottom-left", "reverse-animate-bottom-left");
+    // playAnimation("animate-bottom-left", "reverse-animate-bottom-left");
 
     // Change background colors
     trBtn.style.background = bgColor;
@@ -354,9 +366,11 @@ blBtn.onclick = function () {
 };
 
 brBtn.onclick = function () {
-  if (activeCorner === "bottom-right") {
+  if (activeCorner === "bottom-right" && isCornerActive === true) {
     playClosingAnimation("reverse-animate-bottom-right");
+    isCornerActive = false;
   } else {
+    isCornerActive = true;
     tlBtn.innerHTML = "About";
     trBtn.innerHTML = "Experience";
     blBtn.innerHTML = "Projects";
@@ -366,7 +380,7 @@ brBtn.onclick = function () {
     brBtn.innerHTML = "Contact<br/>&darr;";
 
     handleWindowResize();
-    playAnimation("animate-bottom-right", "reverse-animate-bottom-right");
+    // playAnimation("animate-bottom-right", "reverse-animate-bottom-right");
 
     // Change background colors
     trBtn.style.background = bgColor;
@@ -387,3 +401,129 @@ brBtn.onclick = function () {
     tlContent.style.transform = tlHidden;
   }
 };
+// Define the regions for the corners
+const corners = {
+  "top-left": document.querySelector("#grid__tl"),
+  "top-right": document.querySelector("#grid__tr"),
+  "bottom-left": document.querySelector("#grid__bl"),
+  "bottom-right": document.querySelector("#grid__br"),
+};
+
+// Define the functions for corner animations
+function triggerCornerAnimation(corner, animation, reverseAnimation) {
+  if (activeCorner !== corner) {
+    // Trigger animation for the specified corner
+    activeCorner = corner;
+    playAnimation(animation, reverseAnimation);
+  }
+}
+
+// Add mousemove listeners for the corners
+Object.entries(corners).forEach(([corner, element]) => {
+  element.addEventListener("mousemove", () => {
+    if (isCornerActive === true) {
+      return;
+    }
+    switch (corner) {
+      case "top-left":
+        triggerCornerAnimation(
+          corner,
+          "animate-top-left",
+          "reverse-animate-top-left"
+        );
+        break;
+      case "top-right":
+        triggerCornerAnimation(
+          corner,
+          "animate-top-right",
+          "reverse-animate-top-right"
+        );
+        break;
+      case "bottom-left":
+        triggerCornerAnimation(
+          corner,
+          "animate-bottom-left",
+          "reverse-animate-bottom-left"
+        );
+        break;
+      case "bottom-right":
+        triggerCornerAnimation(
+          corner,
+          "animate-bottom-right",
+          "reverse-animate-bottom-right"
+        );
+        break;
+    }
+  });
+
+  // Reset animation when the mouse leaves the region
+  element.addEventListener("mouseleave", () => {
+    if (isCornerActive === true) {
+      return;
+    }
+    if (activeCorner === corner) {
+      playClosingAnimation(`reverse-animate-${corner.replace("-", "_")}`);
+    }
+  });
+});
+
+// Define the bubble element
+const bubble = document.querySelector("#Bubble");
+
+// Define the safe zone as the center of the screen
+const safeZoneRadius = 200; // Adjust radius as needed (in pixels)
+
+// Function to check if the mouse is in the safe zone
+function isInSafeZone(mouseX, mouseY) {
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  const distance = Math.sqrt(
+    Math.pow(mouseX - centerX, 2) + Math.pow(mouseY - centerY, 2)
+  );
+
+  return distance <= safeZoneRadius;
+}
+
+const messages = [
+  "What are you waiting for? Contact me now!",
+  "Don't be shy, say hi!",
+  "The next big idea starts here. Let’s connect!",
+  "Your project’s soulmate is just a click away!",
+  "Hovering is fun, but chatting is better!",
+];
+
+// Add a global mousemove event listener
+window.addEventListener("mousemove", (event) => {
+  const { clientX, clientY } = event;
+
+  // If a corner is active, exit event
+  if (isCornerActive === true) {
+    return;
+  }
+
+  if (isInSafeZone(clientX, clientY)) {
+    // Display the bubble with a random message
+    if (!bubble.classList.contains("show")) {
+      // Reverse the animation if there's an active corner
+      if (activeCorner) {
+        const reverseAnimation = `reverse-animate-${activeCorner.replace(
+          "-",
+          "_"
+        )}`;
+        playClosingAnimation(reverseAnimation);
+        activeCorner = ""; // Reset active corner
+      }
+      // Reset animation if the mouse is in the safe zone
+      const randomMessage =
+        messages[Math.floor(Math.random() * messages.length)];
+      bubble.textContent = randomMessage;
+      bubble.classList.add("show");
+    }
+  } else {
+    // Hide the bubble when leaving the safe zone
+    if (bubble.classList.contains("show")) {
+      bubble.classList.remove("show");
+    }
+  }
+});
