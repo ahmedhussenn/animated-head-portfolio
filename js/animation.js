@@ -486,11 +486,12 @@ function isInSafeZone(mouseX, mouseY) {
 }
 
 const messages = [
-  "What are you waiting for? Contact me now!",
+  // "What are you waiting for? Contact me now!",
   "Don't be shy, say hi!",
-  "The next big idea starts here. Let’s connect!",
-  "Your project’s soulmate is just a click away!",
+  // "The next big idea starts here. Let’s connect!",
+  // "Your project’s soulmate is just a click away!",
   "Hovering is fun, but chatting is better!",
+  "Click Contact me, I promise it wont bite!",
 ];
 
 // Add a global mousemove event listener
@@ -503,17 +504,17 @@ window.addEventListener("mousemove", (event) => {
   }
 
   if (isInSafeZone(clientX, clientY)) {
+    // Reverse the animation if there's an active corner
+    if (activeCorner) {
+      const reverseAnimation = `reverse-animate-${activeCorner.replace(
+        "-",
+        "_"
+      )}`;
+      playClosingAnimation(reverseAnimation);
+      activeCorner = ""; // Reset active corner
+    }
     // Display the bubble with a random message
     if (!bubble.classList.contains("show")) {
-      // Reverse the animation if there's an active corner
-      if (activeCorner) {
-        const reverseAnimation = `reverse-animate-${activeCorner.replace(
-          "-",
-          "_"
-        )}`;
-        playClosingAnimation(reverseAnimation);
-        activeCorner = ""; // Reset active corner
-      }
       // Reset animation if the mouse is in the safe zone
       const randomMessage =
         messages[Math.floor(Math.random() * messages.length)];
