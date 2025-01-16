@@ -373,3 +373,39 @@ button {
   border: var(--border);
   border-radius: 2rem;
 }
+
+
+/* certificates styling */
+.certificates {
+  /* display: flex; */
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  gap: 2rem;
+  color: var(--text);
+  text-align: start;
+}
+
+.Education {
+  justify-content: center;
+  gap: 2rem;
+  color: var(--text);
+  text-align: start;
+}
+
+
+#typing-text {
+  display: inline-block;
+  border-right: 3px solid var(--text-alt); /* Cursor effect */
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 1.7rem; /* Adjust as needed */
+  min-height: 1.5rem;
+  color: teal;
+  font-weight: 600;
+}
+
+/* Smooth fade-in when switching words */
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}

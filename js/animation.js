@@ -553,3 +553,105 @@ window.addEventListener("mousemove", (event) => {
     }
   }
 });
+
+//if mouse stays  still for 2 seconds, show bubble and reverse animation to idle
+let timeout;
+window.addEventListener("mousemove", function () {
+  clearTimeout(timeout);
+  timeout = setTimeout(function () {
+    if (isCornerActive === true) {
+      return;
+    }
+    if (activeCorner) {
+      const reverseAnimation = `reverse-animate-${activeCorner.replace(
+        "-",
+        "_"
+      )}`;
+      playClosingAnimation(reverseAnimation);
+      activeCorner = ""; // Reset active corner
+    }
+    if (!bubble.classList.contains("show")) {
+      const randomMessage =
+        messages[Math.floor(Math.random() * messages.length)];
+      bubble.textContent = randomMessage;
+      bubble.classList.add("show");
+    }
+  }, 2000);
+});
+
+//if mouse moves, hide bubble
+window.addEventListener("mousemove", function () {
+  //if inside safe zone, do not hide bubble
+  if (isInSafeZone(event.clientX, event.clientY)) {
+    return;
+  }
+  if (bubble.classList.contains("show")) {
+    bubble.classList.remove("show");
+  }
+});
+
+//any click closes current corner (if  click not on button)
+window.addEventListener("click", function (event) {
+  if (isCornerActive === true) {
+    if (
+      event.target !== tlBtn &&
+      event.target !== trBtn &&
+      event.target !== blBtn &&
+      event.target !== brBtn
+    ) {
+      playClosingAnimation(`reverse-animate-${activeCorner.replace("-", "_")}`);
+      activeCorner = ""; // Reset active corner
+      isCornerActive = false;
+    }
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const typingElement = document.querySelector("#typing-text");
+
+  // List of titles from your CV
+  const jobTitles = [
+    "Full-Stack Developer",
+    "Computer Engineer",
+    "Flutter Developer",
+    "Game Designer",
+    "Software Engineer",
+    "UI/UX Enthusiast",
+    "Tech Enthusiast",
+  ];
+
+  let titleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  const typingSpeed = 50; // Typing speed in ms
+  const deletingSpeed = 25; // Deleting speed in ms
+  const pauseTime = 609; // Pause before deleting and switching words
+
+  function typeEffect() {
+    const currentTitle = jobTitles[titleIndex];
+    let displayedText = currentTitle.substring(0, charIndex);
+
+    // Prevent collapsing by ensuring there's always at least one space
+    typingElement.innerHTML = displayedText || "&nbsp;";
+
+    if (!isDeleting && charIndex < currentTitle.length) {
+      charIndex++;
+      setTimeout(typeEffect, typingSpeed);
+    } else if (isDeleting && charIndex > 0) {
+      charIndex--;
+      setTimeout(typeEffect, deletingSpeed);
+    } else if (!isDeleting && charIndex === currentTitle.length) {
+      setTimeout(() => {
+        isDeleting = true;
+        typeEffect();
+      }, pauseTime);
+    } else {
+      isDeleting = false;
+      titleIndex = (titleIndex + 1) % jobTitles.length; // Cycle through titles
+      setTimeout(typeEffect, typingSpeed);
+    }
+  }
+
+  // Start the typing effect
+  typeEffect();
+});
