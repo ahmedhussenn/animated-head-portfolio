@@ -258,6 +258,13 @@ tlBtn.onclick = function () {
     playClosingAnimation("reverse-animate-top-left");
     isCornerActive = false;
   } else {
+    //if another corner is active instead, close that corner and open this one
+    if (isCornerActive === true) {
+      //close the active corner and open this one
+      playClosingAnimation(`reverse-animate-${activeCorner.replace("-", "_")}`);
+      playAnimation("animate-top-left", "reverse-animate-top-left");
+    }
+
     isCornerActive = true;
 
     trBtn.innerHTML = "Experience";
@@ -296,6 +303,12 @@ trBtn.onclick = function () {
     playClosingAnimation("reverse-animate-top-right");
     isCornerActive = false;
   } else {
+    //if another corner is active instead, close that corner and open this one
+    if (isCornerActive === true) {
+      //close the active corner and open this one
+      playClosingAnimation(`reverse-animate-${activeCorner.replace("-", "_")}`);
+      playAnimation("animate-top-right", "reverse-animate-top-right");
+    }
     isCornerActive = true;
     tlBtn.innerHTML = "About";
     blBtn.innerHTML = "Projects";
@@ -333,6 +346,12 @@ blBtn.onclick = function () {
     playClosingAnimation("reverse-animate-bottom-left");
     isCornerActive = false;
   } else {
+    //if another corner is active instead, close that corner and open this one
+    if (isCornerActive === true) {
+      //close the active corner and open this one
+      playClosingAnimation(`reverse-animate-${activeCorner.replace("-", "_")}`);
+      playAnimation("animate-bottom-left", "reverse-animate-bottom-left");
+    }
     isCornerActive = true;
     tlBtn.innerHTML = "About";
     trBtn.innerHTML = "Experience";
@@ -370,6 +389,12 @@ brBtn.onclick = function () {
     playClosingAnimation("reverse-animate-bottom-right");
     isCornerActive = false;
   } else {
+    //if another corner is active instead, close that corner and open this one
+    if (isCornerActive === true) {
+      //close the active corner and open this one
+      playClosingAnimation(`reverse-animate-${activeCorner.replace("-", "_")}`);
+      playAnimation("animate-bottom-right", "reverse-animate-bottom-right");
+    }
     isCornerActive = true;
     tlBtn.innerHTML = "About";
     trBtn.innerHTML = "Experience";
