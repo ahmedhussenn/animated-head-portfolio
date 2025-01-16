@@ -593,6 +593,11 @@ window.addEventListener("mousemove", function () {
 //any click closes current corner (if  click not on button)
 window.addEventListener("click", function (event) {
   if (isCornerActive === true) {
+    // Prevent closing the corner if clicking inside #grid__bl
+    if (event.target.closest("#grid__bl")) {
+      return;
+    }
+
     if (
       event.target !== tlBtn &&
       event.target !== trBtn &&
