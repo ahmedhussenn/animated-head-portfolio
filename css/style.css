@@ -383,6 +383,7 @@ button {
   gap: 2rem;
   color: var(--text);
   text-align: start;
+  
 }
 
 .Education {
@@ -408,4 +409,9 @@ button {
 .fade-out {
   opacity: 0;
   transition: opacity 0.3s ease-out;
+}
+
+#grid__br__content{
+box-shadow: none;
+border: none;
 }

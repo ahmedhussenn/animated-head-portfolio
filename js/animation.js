@@ -619,9 +619,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Full-Stack Developer",
     "Computer Engineer",
     "Flutter Developer",
-    "Game Designer",
     "Software Engineer",
-    "UI/UX Enthusiast",
     "Tech Enthusiast",
   ];
 
