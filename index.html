@@ -12,12 +12,18 @@
     <script src="./js/project-slideshow.js" defer></script>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/animation.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./css/color-mode.css" />
   </head>
+
   <body>
     <div id="hero">
       <h5>Hello I'm</h5>
-      <h1>Youssef Zaka</h1>
+      <h1>Ahmed Hussien</h1>
       <!-- <p>Full-Stack Developer</p> -->
       <p id="typing-text"></p>
       <!-- Dynamic typing animation will update this -->
@@ -42,18 +48,26 @@
                 />
                 <h2>Experience</h2>
                 <p>
-                  2 Years+ <br />
+                  1 Years+ <br />
                   Developer <br />
                   Experience
                 </p>
               </article>
-              <ul class="certificates">
-                <p>Giza Systems (Full-Stack Developer)</p>
-                <p>ACT (POS Integration SW Engineer)</p>
-                <p>Mimocodes (Flutter Developer)</p>
-                <p>E-Aswaq (Flutter Intern)</p>
+              <ul class="certificates" style="list-style: none; padding: 8; font-family: 'Arial', sans-serif; color: #333;">
+                <p style="margin-bottom: 10px; font-size: 18px; font-weight: bold;">
+                  Giza Systems, Full-Stack Developer<br>
+                  <span style="font-size: 16px; color: #555; font-style: Arial;">[Sep 2024 - Present]</span>
+                </p>
+                <p style="margin-bottom: 10px; font-size: 18px; font-weight: bold;">
+                  Asset Technology Group, Software Engineer<br>
+                  <span style="font-size: 16px; color: #555; font-style: Arial;">[Feb 2024 - Sep 2024]</span>
+                </p>
               </ul>
+              
+              
+              
             </div>
+
             <div class="cards__content">
               <article>
                 <img
@@ -65,9 +79,8 @@
                 <p>B. Sc. Computer Engineering</p>
               </article>
               <ul class="certificates">
-                <h3>Cairo University (Credit Hours System)</h3>
-                <p>Major: Computer Engineering</p>
-                <p>Minor: Communications Engineering</p>
+                <h3>Ain Shams University</h3>
+                <p>Major: Information System</p>
                 <p>Graduation Year: 2023</p>
               </ul>
             </div>
@@ -83,21 +96,22 @@
                   Credential <br />
                   links on LinkedIn
                 </p>
-              </article>
-              <p class="cards__content__text">
-                <!-- unordered list of certificates -->
-              </p>
+         
+            </article>
+            <ul class="certificates" style="font-size: 4px;">
+              <p style="font-size: 19px;">Spring Boot, Angular (Udemy)</p>
 
-              <ul class="certificates">
+              <p style="font-size: 19px;">.Net web development, (ITI)</p>
+              <p style="font-size: 19px;">Django for Everybody Specialization, (University of Michigan)</p>
+            </ul>
+            
+              <!-- <ul class="certificates">
                 <li>Spring Boot, Angular (Udemy)</li>
+                <li>.Net web development, (ITI)</li>
                 <li>
-                  Mathematical Thinking (University of California San Diego)
+                  Django for Everybody Specialization, (University of Michigan)
                 </li>
-                <li>Game Design (Michigan State University)</li>
-                <li>Graphic Design (California Institute of the Arts)</li>
-                <li>Social Psychology (With Honors | Wesleyan University)</li>
-                <li>English (Pre-Advanced 4 | British Council)</li>
-              </ul>
+              </ul> -->
             </div>
           </div>
         </div>
@@ -277,31 +291,35 @@
             <div class="project p-1">
               <img
                 class="project__img project-1"
-                src="assets/portfolio-projects/project-1-dark.png"
+                src="assets/portfolio-projects/smart-home.png"
                 alt="Project 1"
+                style="height: 350px; width: 300px"
               />
-              <h2 class="project__title">Project One</h2>
+              <h2 class="project__title">Smart Home</h2>
               <button
                 class="btn"
-                onclick="window.location.href='https://netlify.com'"
+                onclick="window.open('https://lnkd.in/dcUw4DyZ', '_blank')"
               >
                 Demo
               </button>
               <button
                 class="btn"
-                onclick="window.location.href='https://github.com'"
+                onclick="window.open('https://github.com/ahmedhussenn/Smart-Furniture', '_blank')"
               >
                 GitHub
               </button>
             </div>
+
             <div class="project p-2">
               <img
-                class="project__img project-2"
-                src="assets/portfolio-projects/project-2-dark.png"
+                class="project__img project-1"
+                src="assets/portfolio-projects/fuel-opt.jpg"
                 alt="Project 2"
+                style="height: 350px; width: 300px"
               />
-              <h2 class="project__title">Project Two</h2>
-              <button
+              <h2 class="project__title">
+                Fuel Optimization</h2>
+              <!-- <button
                 class="btn"
                 onclick="window.location.href='https://netlify.com'"
               >
@@ -312,28 +330,9 @@
                 onclick="window.location.href='https://github.com'"
               >
                 GitHub
-              </button>
+              </button> -->
             </div>
-            <div class="project p-3">
-              <img
-                class="project__img project-3"
-                src="assets/portfolio-projects/project-3-dark.png"
-                alt="Project 3"
-              />
-              <h2 class="project__title">Project Three</h2>
-              <button
-                class="btn"
-                onclick="window.location.href='https://netlify.com'"
-              >
-                Demo
-              </button>
-              <button
-                class="btn"
-                onclick="window.location.href='https://github.com'"
-              >
-                GitHub
-              </button>
-            </div>
+       
             <button class="arrow" onclick="navigateProject(-1)">
               &#10094;
             </button>
@@ -341,35 +340,107 @@
           </div>
         </div>
       </div>
-      <div id="grid__br">
-        <div id="grid__br__btn">Contact</div>
-        <div id="grid__br__content">
-          <h5 class="contact-text">Get In Touch</h5>
-          <h2 class="contact-text">Contact Me</h2>
-          <div>
+      <div id="grid__br" style="text-align: center; margin: 10px">
+        <div
+          id="grid__br__btn"
+          style="font-weight: bold; font-size: 24px; margin-bottom: 20px"
+        >
+          Contact
+        </div>
+        <div
+          id="grid__br__content"
+          style="
+            display: inline-block;
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px;
+          "
+        >
+          <h5
+            class="contact-text"
+            style="margin: 0px 0; font-size: 18px; color: #555"
+          >
+            Get In Touch
+          </h5>
+          <h2
+            class="contact-text"
+            style="margin: 10px 0; font-size: 28px; color: #333"
+          >
+            Contact Me
+          </h2>
+          <div
+            class="contact-buttons"
+            style="
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 10px;
+              margin-top: 20px;
+              justify-items: center;
+            "
+          >
             <button
               class="btn btn-contact"
-              onclick="window.location.href='mailto:youssef.zakaria.dev@gmail.com'"
+              style="
+                width: 150px;
+                padding: 10px;
+                font-size: 16px;
+                cursor: pointer;
+                border: none;
+                border-radius: 4px;
+                background-color: #007bff;
+                color: white;
+              "
+              onclick="window.open('mailto:ahmedhussienkhedr@gmail.com', '_blank')"
             >
-              Email
+              <i class="fa fa-envelope"></i> Email
             </button>
             <button
               class="btn btn-contact"
-              onclick="window.location.href='https://www.linkedin.com/in/zaka7/'"
+              style="
+                width: 150px;
+                padding: 10px;
+                font-size: 16px;
+                cursor: pointer;
+                border: none;
+                border-radius: 4px;
+                background-color: #0077b5;
+                color: white;
+              "
+              onclick="window.open('https://www.linkedin.com/in/ahmedhussienkhedr/', '_blank')"
             >
-              LinkedIn
+              <i class="fab fa-linkedin"></i> LinkedIn
             </button>
             <button
               class="btn btn-contact"
-              onclick="window.location.href='https://github.com/Youssef-Zaka'"
+              style="
+                width: 150px;
+                padding: 10px;
+                font-size: 16px;
+                cursor: pointer;
+                border: none;
+                border-radius: 4px;
+                background-color: #333;
+                color: white;
+              "
+              onclick="window.open('https://github.com/ahmedhussenn', '_blank')"
             >
-              GitHub
+              <i class="fab fa-github"></i> GitHub
             </button>
             <button
               class="btn btn-contact"
-              onclick="window.location.href='https://drive.google.com/drive/folders/1AYEiYegxGNWV67V6lcwWusNBtpmY4N0g?usp=sharing'"
+              style="
+                width: 150px;
+                padding: 10px;
+                font-size: 16px;
+                cursor: pointer;
+                border: none;
+                border-radius: 4px;
+                background-color: #6c757d;
+                color: white;
+              "
+              onclick="window.open('https://drive.google.com/file/d/1ugjDgPaOhrwQiHTj_elEtyPjIlA9dNov/view?usp=sharing', '_blank')"
             >
-              CV
+              <i class="fa fa-file"></i> CV
             </button>
           </div>
         </div>
